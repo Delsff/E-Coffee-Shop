@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
-    "db:seed": "ts-node --project tsconfig.seed.json src/seed.ts"
+    "postinstall": "prisma generate",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
