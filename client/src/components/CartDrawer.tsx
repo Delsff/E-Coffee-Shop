@@ -153,7 +153,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
               <button
                 onClick={handleCheckout}
                 disabled={loading}
-                className='w-full bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold py-3.5 rounded-xl transition-colors disabled:opacity-50 text-sm'
+                className='w-full bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold py-3.5 rounded-xl transition-colors disabled:opacity-50 text-sm cursor-pointer'
               >
                 {loading ? 'Processing Order...' : 'Checkout Now'}
               </button>
