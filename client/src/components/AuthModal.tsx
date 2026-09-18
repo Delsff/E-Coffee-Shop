@@ -47,7 +47,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         <div className='bg-stone-900 border border-stone-800 rounded-2xl w-full max-w-md p-6 relative shadow-2xl'>
           <button
             onClick={onClose}
-            className='absolute top-4 right-4 text-stone-400 hover:text-stone-100 transition-colors'
+            className='absolute top-4 right-4 text-stone-400 hover:text-stone-100 transition-colors cursor-pointer'
           >
             ✕
           </button>
