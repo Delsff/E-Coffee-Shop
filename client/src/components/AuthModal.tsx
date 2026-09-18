@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuthStore } from '../store/useAuthStore';
-
+import { API_URL } from '../config';
 type AuthModalProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -19,11 +19,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     (e.preventDefault(), setError(''));
     setLoading(true);
-    const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
     const payload = isLogin ? { email, password } : { email, password, name };
 
     try {
-      const res = await fetch(`http://localhost:5000${endpoint}`, {
+      const res = await fetch(`${API_URL}/api/products`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',

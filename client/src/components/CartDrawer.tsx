@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useCartStore } from '../store/useCartStore';
 import { useAuthStore } from '../store/useAuthStore';
+import { API_URL } from '../config';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -33,7 +34,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/orders', {
+      const res = await fetch(`${API_URL}/api/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

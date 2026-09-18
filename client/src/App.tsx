@@ -7,6 +7,7 @@ import { CartDrawer } from './components/CartDrawer';
 import { FilterBar } from './components/FilterBar';
 import { AuthModal } from './components/AuthModal';
 import type { Product } from './types';
+import { API_URL } from './config';
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -21,7 +22,7 @@ function App() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const res = await fetch('http://localhost:5000/api/products');
+        const res = await fetch(`${API_URL}/api/products`);
         if (!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
         setProducts(data);
