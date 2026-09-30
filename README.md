@@ -26,3 +26,10 @@ Order Confirmation — post-checkout screen generating unique order IDs and summ
 Client (Frontend) • React & TypeScript — component-based architecture with strict typing • Vite — lightning-fast build tool and dev server • Tailwind CSS — utility-first styling for modern UI components • Zustand — lightweight state management for global cart persistence • React Router — seamless client-side single-page routing
 
 Server (Backend) • Node.js & Express — RESTful API architecture written in TypeScript • CORS & Middleware — secure cross-origin handling for cloud deployment • REST Endpoints — structured routes for catalog retrieval (/api/products) and order placement (/api/orders)
+
+<img width="1892" height="897" alt="Снимок экрана 2026-09-30 171307" src="https://github.com/user-attachments/assets/21553a5c-fad1-46e1-8144-2e5cf0ec5dff" />
+
+
+🚀 Live Demo
+
+[View online on Netlify](https://e-coffee-shop241.netlify.app/)
