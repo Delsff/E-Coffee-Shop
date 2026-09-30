@@ -149,6 +149,10 @@ app.get("/api/orders", (req: Request, res: Response) => {
   res.json(orders);
 });
 
+app.get("/", (req: Request, res: Response) => {
+  res.send("Roast & Bean API is running...");
+});
+
 app.post("/api/orders", (req: Request, res: Response) => {
   const { customer, items, totalAmount } = req.body;
 
