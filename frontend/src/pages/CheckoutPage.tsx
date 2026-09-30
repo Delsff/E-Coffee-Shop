@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useCartStore } from "../store/useCartStore";
 import { Link } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
 export const CheckoutPage = () => {
   const { items, getTotalPrice, clearCart } = useCartStore();
   const [createdOrderId, setCreatedOrderId] = useState<string | null>(null);
@@ -16,6 +18,7 @@ export const CheckoutPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
+
     const orderPayload = {
       customer: formData,
       items: items.map(({ product, quantity }) => ({
@@ -27,7 +30,7 @@ export const CheckoutPage = () => {
       totalAmount: getTotalPrice(),
     };
     try {
-      const res = await fetch("http://localhost:5001/api/orders", {
+      const res = await fetch(`${API_URL}/api/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderPayload),
@@ -48,7 +51,6 @@ export const CheckoutPage = () => {
       setIsSubmitting(false);
     }
   };
-
   if (createdOrderId) {
     return (
       <main className="max-w-3xl mx-auto p-6 text-center py-16">

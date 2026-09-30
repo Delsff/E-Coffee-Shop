@@ -2,15 +2,15 @@ import { useEffect, useState, useMemo } from "react";
 import { useCartStore } from "../store/useCartStore";
 import { ProductModal } from "./ProductModal";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
-
 const DEFAULT_IMAGE =
   "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&q=80";
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
 
 const getImageUrl = (url?: string) => {
   if (!url) return DEFAULT_IMAGE;
   if (url.startsWith("http://") || url.startsWith("https://")) return url;
-  return `http://localhost:5001${url.startsWith("/") ? "" : "/"}${url}`;
+  return `${API_URL}${url.startsWith("/") ? "" : "/"}${url}`;
 };
 
 export type Product = {
@@ -22,7 +22,7 @@ export type Product = {
   roastLevel?: "light" | "medium" | "dark";
   imageUrl: string;
   inStock: boolean;
-};ш
+};
 
 type RoastFilter = "all" | "light" | "medium" | "dark";
 type SortOption = "default" | "price-asc" | "price-desc";
@@ -36,11 +36,12 @@ export const CatalogPage = () => {
   const [roastFilter, setRoastFilter] = useState<RoastFilter>("all");
   const [sortBy, setSortBy] = useState<SortOption>("default");
   const { addToCart } = useCartStore();
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch("http://localhost:5001/api/products");
+        const res = await fetch(`${API_URL}/api/products`);
         if (!res.ok) throw new Error("Failed to fetch products");
         const data = await res.json();
         setProducts(data);
@@ -69,20 +70,17 @@ export const CatalogPage = () => {
     }
     return result;
   }, [products, searchQuery, roastFilter, sortBy]);
-
   const roastOptions: { label: string; value: RoastFilter }[] = [
     { label: "All Roasts", value: "all" },
     { label: "Light", value: "light" },
     { label: "Medium", value: "medium" },
     { label: "Dark", value: "dark" },
   ];
-
   const handleResetFilters = () => {
     setSearchQuery("");
     setRoastFilter("all");
     setSortBy("default");
   };
-
   return (
     <main className="max-w-6xl mx-auto px-4 py-8 ">
       <div className="mb-8">
