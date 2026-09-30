@@ -2,6 +2,8 @@ import { useEffect, useState, useMemo } from "react";
 import { useCartStore } from "../store/useCartStore";
 import { ProductModal } from "./ProductModal";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
 const DEFAULT_IMAGE =
   "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&q=80";
 
@@ -20,7 +22,7 @@ export type Product = {
   roastLevel?: "light" | "medium" | "dark";
   imageUrl: string;
   inStock: boolean;
-};
+};ш
 
 type RoastFilter = "all" | "light" | "medium" | "dark";
 type SortOption = "default" | "price-asc" | "price-desc";
